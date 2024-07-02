@@ -1,0 +1,10 @@
+service: "service.py:Phi3"
+include:
+- "*.py"
+python:
+  packages:
+    - huggingface-hub
+    - llama-cpp-python
+envs:
+- name: CMAKE_ARGS
+  value: "-DLLAMA_METAL=on"
