@@ -1,10 +1,15 @@
 service: "service.py:Phi3"
+labels:
+  owner: bentoml-team
+  platforms: macos
+  source_repo: https://github.com/bentoml/openllm-repo-recipe.git
+  source_directory: gguf
+  service_home: /chat
 include:
 - "*.py"
 python:
-  packages:
-    - huggingface-hub
-    - llama-cpp-python
+  requirements_txt: "./requirements.txt"
+  lock_packages: false
 envs:
 - name: CMAKE_ARGS
   value: "-DLLAMA_METAL=on"
